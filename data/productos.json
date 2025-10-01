@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "precio": 19.99,
+        "descripcion": "Una de las obras maestras del realismo mágico.",
+        "imagen": "cien-anios-soledad.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "1984",
+        "autor": "George Orwell",
+        "precio": 14.50,
+        "descripcion": "Novela política de ficción distópica y atemporal.",
+        "imagen": "1984.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "El Principito",
+        "autor": "Antoine de Saint-Exupéry",
+        "precio": 9.99,
+        "descripcion": "Un clásico que explora temas de amistad, amor y el sentido de la vida.",
+        "imagen": "principito.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "El Código Da Vinci",
+        "autor": "Dan Brown",
+        "precio": 16.75,
+        "descripcion": "Un thriller de misterio que combina historia del arte y criptografía.",
+        "imagen": "codigo-davinci.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Rayuela",
+        "autor": "Julio Cortázar",
+        "precio": 22.00,
+        "descripcion": "Contranovela experimental, con múltiples formas de lectura.",
+        "imagen": "rayuela.jpg"
+    }
+]
