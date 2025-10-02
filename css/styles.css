@@ -1,18 +1,13 @@
-/* ====================================
-   VARIABLES Y BASE (Paleta Acogedora de Librería)
-   ==================================== */
 :root {
-    /* Paleta de colores cálida y elegante */
-    --color-primary: #5c4033; /* Marrón Chocolate Oscuro (Textos principales, Botones, Header) */
-    --color-secondary: #f4e9d7; /* Beige Claro Cremoso (Fondo de Sidebar/Pergamino) */
-    --color-accent: #c49a65; /* Dorado Suave (Acentos, Precios, Botones Secundarios) */
+    --color-primary: #5c4033; 
+    --color-secondary: #f4e9d7
+    --color-accent: #c49a65;  
     --color-text-dark: #333;
     --color-text-light: #ffffff; 
-    --color-background: #fffafa; /* Blanco Roto para el fondo principal */
-    --color-light-gray: #e0e0e0; /* Gris Claro para bordes/separaciones */
+    --color-background: #fffafa; 
+    --color-light-gray: #e0e0e0; 
 }
 
-/* Base del cuerpo */
 body {
     font-family: Georgia, serif; 
     margin: 0;
