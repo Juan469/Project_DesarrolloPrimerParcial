@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - La Estantería Modular</title>
+    <link rel="stylesheet" href="./css/styles.css"> 
+</head>
+<body>
+    <div id="header-placeholder"></div> 
+    
+    <div class="main-container">
+        <div id="sidebar-placeholder"></div> 
+
+        <div class="content-wrapper">
+            <main class="main-content">
+                <h2>Nuestros Libros Destacados</h2>
+                
+                <section id="product-list" class="product-list">
+                    </section>
+                
+                <template id="product-template">
+                    <article class="product-card-template">
+                        <img src="" alt="Imagen de libro" data-target="imagen-url">
+                        <h3 data-target="nombre">Título del Libro</h3>
+                        <p class="autor" data-target="autor">Autor</p>
+                        <p data-target="descripcion">Descripción breve...</p>
+                        <p class="price" data-target="precio">Precio</p>
+                        <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    </article>
+                </template>
+
+            </main>
+            <div id="footer-placeholder"></div> 
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+/* ====================================
+   VARIABLES Y BASE (Paleta Acogedora de Librería)
+   ==================================== */
+:root {
+    /* Paleta de colores cálida y elegante */
+    --color-primary: #5c4033; /* Marrón Chocolate Oscuro (Textos principales, Botones, Header) */
+    --color-secondary: #f4e9d7; /* Beige Claro Cremoso (Fondo de Sidebar/Pergamino) */
+    --color-accent: #c49a65; /* Dorado Suave (Acentos, Precios, Botones Secundarios) */
+    --color-text-dark: #333;
+    --color-text-light: #ffffff; 
+    --color-background: #fffafa; /* Blanco Roto para el fondo principal */
+    --color-light-gray: #e0e0e0; /* Gris Claro para bordes/separaciones */
+}
+
+/* Base del cuerpo */
+body {
+    font-family: Georgia, serif; 
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+
+/* ====================================
+   HEADER
+   ==================================== */
+.main-header {
+    background-color: var(--color-primary); 
+    color: var(--color-text-light);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: normal;
+}
+
+.search-bar input[type="search"] {
+    padding: 8px 10px;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px 0 0 4px;
+    width: 250px;
+}
+
+.search-bar button {
+    padding: 8px 10px;
+    background-color: var(--color-accent); 
+    color: var(--color-text-dark); 
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+
+/* ====================================
+   SIDEBAR
+   ==================================== */
+.main-sidebar {
+    width: 220px;
+    background-color: var(--color-secondary); 
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.sidebar-title {
+    color: var(--color-primary);
+    padding: 10px 20px 5px;
+    margin: 15px 0 5px;
+    border-bottom: 1px solid var(--color-accent); 
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--color-text-dark);
+    transition: background-color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+    background-color: var(--color-light-gray);
+    color: var(--color-primary);
+}
+
+
+/* ====================================
+   FOOTER
+   ==================================== */
+.main-footer {
+    background-color: var(--color-primary); 
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; 
+}
+
+
+/* ====================================
+   LOGIN (ESTILOS: Elegante y Funcional)
+   ==================================== */
+
+.login-container {
+    max-width: 400px; 
+    margin: 10vh auto; 
+    padding: 30px; 
+    background: var(--color-text-light); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid var(--color-light-gray);
+    position: relative;
+}
+
+.login-container h2 {
+    color: var(--color-primary); 
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-family: Georgia, serif; 
+    border-bottom: 2px solid var(--color-light-gray); 
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px; 
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--color-primary); 
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid var(--color-light-gray);
+    border-radius: 4px;
+    box-sizing: border-box; 
+    background-color: var(--color-background); 
+    transition: all 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--color-accent); 
+    box-shadow: 0 0 0 1px var(--color-accent);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px; 
+    background-color: var(--color-primary); 
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-login:hover {
+    background-color: #4a3328; 
+}
+
+.btn-login:disabled {
+    background-color: var(--color-light-gray);
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.error-message {
+    color: var(--color-accent); 
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* ====================================
+   PRODUCTOS: Grid y Plantilla (<template>)
+   ==================================== */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Estilos para la plantilla HTML */
+.product-card-template {
+    border: 1px solid var(--color-light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--color-text-light); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.2s;
+}
+.product-card-template:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.product-card-template img {
+    width: 100%;
+    max-height: 200px; 
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-card-template .autor {
+    font-style: italic;
+    color: #6d6d6d;
+    margin: 5px 0 10px;
+}
+
+.product-card-template .price {
+    color: var(--color-accent); 
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+    margin-top: 10px;
+}
+
+.add-to-cart-btn {
+    background-color: var(--color-accent); 
+    color: var(--color-primary);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #af8751;
+}
+
+/* ====================================
+   ESTILOS DEL WEB COMPONENT (<product-card>)
+   (Utilizados dentro del Shadow DOM)
+   ==================================== */
+.card {
+    border: 1px solid var(--color-light-gray);
+    background-color: var(--color-text-light);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    max-height: 200px; 
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: var(--color-primary);
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+.card .autor {
+    font-size: 0.9em;
+    color: #6d6d6d;
+    margin-bottom: 10px;
+}
+
+.card .price {
+    font-weight: bold;
+    color: var(--color-accent);
+    font-size: 1.1em;
+    display: block;
+    margin-top: 10px;
+}
+
+.card button {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.card button:hover {
+    background-color: #af8751;
+}
+
+
+/* ====================================
+   ANIMACIÓN CREATIVA PARA LOGIN
+   ==================================== */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+.login-container.shake-error {
+    animation: shake 0.4s ease-in-out;
+    box-shadow: 0 10px 30px rgba(196, 154, 101, 0.5), 
+                0 0 0 3px var(--color-accent);
+}
+
+
+/* ====================================
+   RESPONSIVE DESIGN (Media Queries)
+   ==================================== */
+
+/* Tabletas y Móviles (Max-width: 768px) */
+@media (max-width: 768px) {
+    
+    .main-container {
+        flex-direction: column;
+    }
+
+    .header-content {
+        justify-content: flex-start;
+    }
+    .search-bar {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-sidebar {
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        transform: translateX(-100%);
+        padding-top: 60px;
+    }
+
+    .main-sidebar.is-open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+}
+
+/* Móviles pequeños (Max-width: 500px) */
+@media (max-width: 500px) {
+    .login-container {
+        margin: 5vh 10px; 
+        padding: 20px;
+    }
+    
+    .product-list {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+}
