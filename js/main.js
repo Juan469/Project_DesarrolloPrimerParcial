@@ -22,8 +22,6 @@ class ProductCard extends HTMLElement {
         const descripcion = this.getAttribute('descripcion') || 'Sin descripción.';
         const imagen = this.getAttribute('imagen') || 'placeholder.jpg';
         
-        // 🚨 IMPORTANTE: Cargamos los estilos externos dentro del Shadow DOM.
-        // Esto permite que el componente use las clases CSS globales (ej. .card)
         this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="./css/styles.css"> 
             
@@ -47,14 +45,12 @@ customElements.define('product-card', ProductCard);
 // ===========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 2.1. Cargar fragmentos reutilizables dinámicamente
     const fragmentos = [
         { id: 'header-placeholder', path: './components/header.html' },
         { id: 'footer-placeholder', path: './components/footer.html' },
         { id: 'sidebar-placeholder', path: './components/sidebar.html' }
     ];
 
-    // Usaremos un contador para saber cuándo todos los fragmentos han cargado.
     let fragmentsLoaded = 0;
     const totalFragments = fragmentos.length;
 
@@ -62,17 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cargarFragmento(frag.id, frag.path, () => {
             fragmentsLoaded++;
             if (fragmentsLoaded === totalFragments) {
-                // Ejecutar lógica de responsividad solo después de cargar todo
                 setupSidebarToggle();
             }
         });
     });
 
-    // 2.2. Cargar y renderizar productos
     cargarProductos();
 });
 
-// Función para cargar un fragmento HTML (se modifica para usar callback)
+// Función para cargar un fragmento HTML
 async function cargarFragmento(elementId, path, callback) {
     try {
         const response = await fetch(path);
@@ -85,7 +79,7 @@ async function cargarFragmento(elementId, path, callback) {
     }
 }
 
-// Lógica para el toggle del sidebar en móvil
+// Toggle del sidebar en móvil
 function setupSidebarToggle() {
     const menuButton = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.main-sidebar');
@@ -95,11 +89,9 @@ function setupSidebarToggle() {
             sidebar.classList.toggle('is-open');
         });
 
-        // Cerrar el menú al hacer clic en un enlace (en móvil)
         const sidebarLinks = sidebar.querySelectorAll('a');
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // Solo si el sidebar está visible
                 if (window.innerWidth <= 768) { 
                     sidebar.classList.remove('is-open');
                 }
@@ -108,42 +100,53 @@ function setupSidebarToggle() {
     }
 }
 
-// Función para cargar productos con Fetch y renderizar (se mantiene igual)
+// ===========================================
+// 3. FUNCIÓN PARA CARGAR PRODUCTOS
+// ===========================================
 async function cargarProductos() {
-    // ... (Cuerpo de la función cargarProductos se mantiene igual, ya maneja el JSON y la alternancia) ...
-    const productList = document.getElementById('product-list');
-    const productTemplate = document.getElementById('product-template');
-    
+    // Mapear contenedores por género
+    const contenedores = {
+        "ciencia-ficcion": document.getElementById("product-list-ciencia"),
+        "historia": document.getElementById("product-list-historia")
+    };
+
     try {
         const response = await fetch('./data/productos.json');
         const productos = await response.json();
 
-        productList.innerHTML = '';
+        // Limpiar contenedores
+        Object.values(contenedores).forEach(c => c.innerHTML = '');
 
         productos.forEach((producto, index) => {
+            let card;
+
             if (index < 3) {
-                // Productos 1, 2 y 3: Renderizar con la plantilla <template>
-                const clone = productTemplate.content.cloneNode(true);
-                
+                // Los 3 primeros con template
+                const template = document.getElementById('product-template');
+                const clone = template.content.cloneNode(true);
                 clone.querySelector('[data-target="nombre"]').textContent = producto.nombre;
-                clone.querySelector('[data-target="autor"]').textContent = `Autor: ${producto.autor}`; 
+                clone.querySelector('[data-target="autor"]').textContent = `Autor: ${producto.autor}`;
                 clone.querySelector('[data-target="descripcion"]').textContent = producto.descripcion;
                 clone.querySelector('[data-target="precio"]').textContent = `$${producto.precio.toFixed(2)}`;
                 clone.querySelector('[data-target="imagen-url"]').src = `./img/${producto.imagen}`;
                 clone.querySelector('[data-target="imagen-url"]').alt = producto.nombre;
-                
-                productList.appendChild(clone);
+                card = clone;
             } else {
-                // Productos 4, 5 y siguientes: Renderizar con el Web Component
-                const card = document.createElement('product-card');
-                
-                card.setAttribute('nombre', producto.nombre);
-                card.setAttribute('autor', producto.autor); 
-                card.setAttribute('precio', producto.precio);
-                card.setAttribute('descripcion', producto.descripcion);
-                card.setAttribute('imagen', producto.imagen);
+                // Resto con Web Component
+                const comp = document.createElement('product-card');
+                comp.setAttribute('nombre', producto.nombre);
+                comp.setAttribute('autor', producto.autor); 
+                comp.setAttribute('precio', producto.precio);
+                comp.setAttribute('descripcion', producto.descripcion);
+                comp.setAttribute('imagen', producto.imagen);
+                card = comp;
+            }
 
-                productList.appendChild(card);
+            // Insertar en el contenedor correcto según el género
+            if (contenedores[producto.genero]) {
+                contenedores[producto.genero].appendChild(card);
+            } else {
+                console.warn(`⚠️ Género no reconocido: ${producto.genero}`);
             }
         });
 

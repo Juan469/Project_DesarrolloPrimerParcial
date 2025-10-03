@@ -5,7 +5,8 @@
         "autor": "Gabriel García Márquez",
         "precio": 19.99,
         "descripcion": "Una de las obras maestras del realismo mágico.",
-        "imagen": "cien-anios-soledad.jpg"
+        "imagen": "cien-anios-soledad.jpg",
+        "genero": "historia"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "autor": "George Orwell",
         "precio": 14.50,
         "descripcion": "Novela política de ficción distópica y atemporal.",
-        "imagen": "1984.jpg"
+        "imagen": "1984.jpg",
+        "genero": "ciencia-ficcion"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "autor": "Antoine de Saint-Exupéry",
         "precio": 9.99,
         "descripcion": "Un clásico que explora temas de amistad, amor y el sentido de la vida.",
-        "imagen": "principito.jpg"
+        "imagen": "principito.jpg",
+        "genero": "ciencia-ficcion"
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "autor": "Dan Brown",
         "precio": 16.75,
         "descripcion": "Un thriller de misterio que combina historia del arte y criptografía.",
-        "imagen": "codigo-davinci.jpg"
+        "imagen": "codigo-davinci.jpg",
+        "genero": "historia"
     },
     {
         "id": 5,
@@ -37,6 +41,7 @@
         "autor": "Julio Cortázar",
         "precio": 22.00,
         "descripcion": "Contranovela experimental, con múltiples formas de lectura.",
-        "imagen": "rayuela.jpg"
+        "imagen": "rayuela.jpg",
+        "genero": "historia"
     }
 ]
