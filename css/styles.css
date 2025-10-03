@@ -33,9 +33,9 @@ body {
 }
 
 
-/* ====================================
+/*
    HEADER
-   ==================================== */
+   */
 .main-header {
     background-color: var(--color-primary); 
     color: var(--color-text-light);
@@ -364,11 +364,10 @@ body {
 }
 
 
-/* ====================================
+/* 
    RESPONSIVE DESIGN (Media Queries)
-   ==================================== */
+   */
 
-/* Tabletas y Móviles (Max-width: 768px) */
 @media (max-width: 768px) {
     
     .main-container {
@@ -405,7 +404,6 @@ body {
     }
 }
 
-/* Móviles pequeños (Max-width: 500px) */
 @media (max-width: 500px) {
     .login-container {
         margin: 5vh 10px; 

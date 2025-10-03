@@ -1,68 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catálogo Completo - La Estantería Modular</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css" />
     <style>
-        /* Scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="header-placeholder"></div>
     <div class="main-container">
-        <div id="sidebar-placeholder">
-            <nav class="main-sidebar">
-                <div class="sidebar-title">Menú</div>
-                <ul class="sidebar-menu">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
+      <div id="sidebar-placeholder">
+        <nav class="main-sidebar">
+          <div class="sidebar-title">Menú</div>
+          <ul class="sidebar-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
 
-                <div class="sidebar-title">Géneros</div>
-                <ul class="sidebar-menu">
-                    <li><a href="#ciencia-ficcion">Ciencia Ficción</a></li>
-                    <li><a href="#historia">Historia</a></li>
-                </ul>
-            </nav>
-        </div>
+          <div class="sidebar-title">Géneros</div>
+          <ul class="sidebar-menu">
+            <li><a href="#ciencia-ficcion">Ciencia Ficción</a></li>
+            <li><a href="#historia">Historia</a></li>
+          </ul>
+        </nav>
+      </div>
 
-        <div class="content-wrapper">
-            <main class="main-content">
-                <h2>Catálogo Completo</h2>
+      <div class="content-wrapper">
+        <main class="main-content">
+          <h2>Catálogo Completo</h2>
 
-                <!-- Sección Ciencia Ficción -->
-                <h2 id="ciencia-ficcion">Ciencia Ficción</h2>
-                <section id="product-list-ciencia" class="product-list">
-                    <!-- Aquí van los productos de ciencia ficción -->
-                </section>
+          <h2 id="ciencia-ficcion">Ciencia Ficción</h2>
+          <section id="product-list-ciencia" class="product-list"></section>
 
-                <!-- Sección Historia -->
-                <h2 id="historia">Historia</h2>
-                <section id="product-list-historia" class="product-list">
-                    <!-- Aquí van los productos de historia -->
-                </section>
-                
-                <template id="product-template">
-                    <article class="product-card-template">
-                        <img src="" alt="Imagen de libro" data-target="imagen-url">
-                        <h3 data-target="nombre">Título del Libro</h3>
-                        <p class="autor" data-target="autor">Autor</p>
-                        <p data-target="descripcion">Descripción breve...</p>
-                        <p class="price" data-target="precio">Precio</p>
-                        <button class="add-to-cart-btn">Añadir al Carrito</button>
-                    </article>
-                </template>
-            </main>
-            <div id="footer-placeholder"></div>
-        </div>
+          <h2 id="historia">Historia</h2>
+          <section id="product-list-historia" class="product-list"></section>
+
+          <template id="product-template">
+            <article class="product-card-template">
+              <img src="" alt="Imagen de libro" data-target="imagen-url" />
+              <h3 data-target="nombre">Título del Libro</h3>
+              <p class="autor" data-target="autor">Autor</p>
+              <p data-target="descripcion">Descripción breve...</p>
+              <p class="price" data-target="precio">Precio</p>
+              <button class="add-to-cart-btn">Añadir al Carrito</button>
+            </article>
+          </template>
+        </main>
+        <div id="footer-placeholder"></div>
+      </div>
     </div>
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>
