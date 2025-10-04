@@ -11,16 +11,16 @@ Este proyecto es una implementación moderna de un sitio web de comercio electr�
 
 Para lograr una estructura limpia, reutilizable y fácil de mantener, el proyecto se basa en tres pilares de modularidad:
 
-### 📄 Fragmentos HTML (Inyección de Estructura)
+###  Fragmentos HTML (Inyección de Estructura)
 Los fragmentos son archivos HTML externos que contienen bloques de la estructura de la página.
 * **Implementación:** Se utilizan para componentes estructurales repetitivos.
 * **Uso en el Proyecto:** El **Header**, el **Sidebar** (navegación), y el **Footer** están separados en archivos (`header.html`, `sidebar.html`, `footer.html`). Se inyectan en `index.html` usando la función `fetch` y JavaScript (`main.js`), asegurando un único punto de mantenimiento para la estructura principal.
 
-### 🧩 Etiqueta `<template>` (Plantillas Estáticas)
+### Etiqueta `<template>` (Plantillas Estáticas)
 La etiqueta `<template>` define un fragmento de HTML que no se renderiza automáticamente, sino que sirve como molde para ser clonado e insertado dinámicamente mediante JavaScript.
 * **Uso en el Proyecto:** Se usa exclusivamente para renderizar los **primeros tres productos** de la sección **Novedades**. Esto demuestra el uso de un patrón de inyección de contenido directo a partir de una plantilla HTML.
 
-### 🌐 Web Components (Encapsulamiento y Reutilización)
+###  Web Components (Reutilización)
 Los Web Components (`<product-card>`) son etiquetas HTML personalizadas y reutilizables, que encapsulan su marcado y su estilo usando el *Shadow DOM*.
 * **Implementación:** El componente `<product-card>` se utiliza para renderizar **todos los demás productos** (a partir del cuarto producto y en las secciones Historia y Ciencia Ficción). Esto garantiza que el estilo de la tarjeta de producto no se filtre ni afecte a otros elementos de la página.
 
