@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio - La Estantería Modular</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <div id="header-placeholder"></div>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+    
+    <link rel="icon" type="image/jpg" href="./img/logo.jpg"> 
+    
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
     <div class="main-container">
-      <div id="sidebar-placeholder"></div>
+        
+        <div id="sidebar-placeholder"></div>
 
-      <div class="content-wrapper">
-        <main class="main-content">
-          <h2>Nuestros Libros Destacados</h2>
+        <div class="content-wrapper">
+            
+            <div id="header-placeholder"></div>
 
-          <section>
-            <h3 id="ciencia-ficcion">Ciencia Ficción</h3>
-            <div id="product-list-ciencia" class="product-list"></div>
-          </section>
+            <main class="main-content">
+                
+                <h2 class="section-title" id="novedades">Novedades</h2>
+                <div id="product-list-novedades" class="product-list">
+                    </div>
 
-          <section>
-            <h3 id="historia">Historia</h3>
-            <div id="product-list-historia" class="product-list"></div>
-          </section>
+                <h2 class="section-title" id="seccion-historia">Historia</h2>
+                <div id="product-list-historia" class="product-list">
+                    </div>
 
-          <template id="product-template">
-            <article class="product-card-template">
-              <img src="" alt="Imagen de libro" data-target="imagen-url" />
-              <h3 data-target="nombre">Título del Libro</h3>
-              <p class="autor" data-target="autor">Autor</p>
-              <p data-target="descripcion">Descripción breve...</p>
-              <p class="price" data-target="precio">Precio</p>
-              <button class="add-to-cart-btn">Añadir al Carrito</button>
-            </article>
-          </template>
-        </main>
-        <div id="footer-placeholder"></div>
-      </div>
+                <h2 class="section-title" id="seccion-ciencia-ficcion">Ciencia Ficción</h2>
+                <div id="product-list-ciencia" class="product-list">
+                    </div>
+
+            </main>
+
+            <div id="footer-placeholder"></div>
+        </div>
     </div>
+
+    <template id="product-template">
+        <article class="product-card-template">
+            <img data-target="imagen-url" src="placeholder.jpg" alt="Portada de libro">
+            
+            <h3 data-target="nombre">Título del Libro</h3>
+            <p class="autor" data-target="autor">Autor:</p>
+            
+            <p data-target="descripcion">Descripción corta del libro...</p>
+            
+            <span class="price" data-target="precio">$0.00</span>
+            
+            <button class="add-to-cart-btn">Añadir al Carrito</button>
+        </article>
+    </template>
+
     <script src="./js/main.js"></script>
-  </body>
+</body>
 </html>
