@@ -1,18 +1,25 @@
 :root {
-    --color-primary: #5c4033; 
-    --color-secondary: #f4e9d7
-    --color-accent: #c49a65;  
+    /* PALETA PROFESIONAL DE LIBRERÍA (FINAL Y ARMONIOSA) */
+    --color-primary: #4A3522;       /* Marrón Café Oscuro - Base (Headers, texto fuerte) */
+    --color-background-page: #EDE9D8; /* Beige Tostado - FONDO DE PÁGINA */
+    --color-background-card: #FFFFFF; /* Blanco Puro - Fondo de Tarjetas y Formulario (Contraste) */
+    --color-accent: #C89759;        /* Dorado Envejecido - Énfasis (Precios, Botones de producto) */
+    --color-danger: #8B0000;        /* Rojo Burdeos Elegante - Para el botón de Carrito/CTAs */
+    
     --color-text-dark: #333;
     --color-text-light: #ffffff; 
-    --color-background: #fffafa; 
     --color-light-gray: #e0e0e0; 
 }
+
+/* ====================================
+   ESTRUCTURA BASE
+   ==================================== */
 
 body {
     font-family: Georgia, serif; 
     margin: 0;
     padding: 0;
-    background-color: var(--color-background);
+    background-color: var(--color-background-page); 
     color: var(--color-text-dark);
 }
 
@@ -32,15 +39,14 @@ body {
     padding: 20px;
 }
 
-
-/*
-   HEADER
-   */
+/* ====================================
+   HEADER Y LOGO
+   ==================================== */
 .main-header {
     background-color: var(--color-primary); 
     color: var(--color-text-light);
     padding: 15px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .header-content {
@@ -51,10 +57,24 @@ body {
     margin: 0 auto;
 }
 
-.main-header h1 {
+/* Contenedor del Logo e Imagen del Título */
+.logo-container {
+    display: flex;
+    align-items: center; 
+}
+
+.site-logo {
+    height: 40px; 
+    width: auto;
+    margin-right: 15px; 
+    vertical-align: middle;
+}
+
+.site-title-display {
     margin: 0;
     font-size: 1.8em;
-    font-weight: normal;
+    font-weight: 500;
+    color: var(--color-text-light); 
 }
 
 .search-bar input[type="search"] {
@@ -65,9 +85,9 @@ body {
 }
 
 .search-bar button {
-    padding: 8px 10px;
     background-color: var(--color-accent); 
-    color: var(--color-text-dark); 
+    color: var(--color-primary); 
+    padding: 8px 10px;
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
@@ -84,20 +104,40 @@ body {
     margin-right: 15px;
 }
 
+/* Botón de Carrito (Header) - Burdeos Elegante */
+.cart-button-header {
+    background-color: var(--color-danger); 
+    color: white; 
+    font-weight: bold;
+    padding: 10px 18px; 
+    border-radius: 6px; 
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+    border: none;
+    margin-left: 15px; 
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); 
+}
+
+.cart-button-header:hover {
+    background-color: #6d0000; 
+    transform: scale(1.05); 
+}
+
 
 /* ====================================
-   SIDEBAR
-   ==================================== */
+    SIDEBAR
+    ==================================== */
 .main-sidebar {
+    background-color: #F8F4EC; 
     width: 220px;
-    background-color: var(--color-secondary); 
     padding: 20px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .sidebar-title {
-    color: var(--color-primary);
+    color: var(--color-primary); 
     padding: 10px 20px 5px;
     margin: 15px 0 5px;
     border-bottom: 1px solid var(--color-accent); 
@@ -117,14 +157,14 @@ body {
 }
 
 .sidebar-menu li a:hover {
-    background-color: var(--color-light-gray);
+    background-color: #E0DBC8; 
     color: var(--color-primary);
 }
 
 
 /* ====================================
-   FOOTER
-   ==================================== */
+    FOOTER
+    ==================================== */
 .main-footer {
     background-color: var(--color-primary); 
     color: var(--color-text-light);
@@ -135,17 +175,17 @@ body {
 
 
 /* ====================================
-   LOGIN (ESTILOS: Elegante y Funcional)
-   ==================================== */
+    LOGIN (Estilo Profesional)
+    ==================================== */
 
 .login-container {
     max-width: 400px; 
     margin: 10vh auto; 
     padding: 30px; 
-    background: var(--color-text-light); 
-    border-radius: 8px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-    border: 1px solid var(--color-light-gray);
+    background: var(--color-background-card); 
+    border-radius: 10px; /* Esquinas ligeramente más redondeadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más profunda */
+    border: 1px solid var(--color-primary); /* Borde sutil del color primario */
     position: relative;
 }
 
@@ -153,80 +193,78 @@ body {
     color: var(--color-primary); 
     text-align: center;
     margin-bottom: 25px;
-    font-size: 1.8em;
+    font-size: 2em; /* Título más grande */
     font-family: Georgia, serif; 
-    border-bottom: 2px solid var(--color-light-gray); 
-    padding-bottom: 10px;
-}
-
-.form-group {
-    margin-bottom: 15px; 
+    border-bottom: 3px solid var(--color-accent); /* Línea dorada más gruesa */
+    padding-bottom: 15px;
 }
 
 .form-group label {
+    color: var(--color-primary); 
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--color-primary); 
 }
 
 .form-group input[type="text"],
 .form-group input[type="password"] {
     width: 100%;
-    padding: 10px; 
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid var(--color-light-gray);
-    border-radius: 4px;
-    box-sizing: border-box; 
-    background-color: var(--color-background); 
-    transition: all 0.3s;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Toque de color: Foco Dorado */
 .form-group input[type="text"]:focus,
 .form-group input[type="password"]:focus {
     border-color: var(--color-accent); 
-    box-shadow: 0 0 0 1px var(--color-accent);
-    outline: none;
+    box-shadow: 0 0 0 2px rgba(200, 151, 89, 0.4);
 }
 
 .btn-login {
-    width: 100%;
-    padding: 12px; 
     background-color: var(--color-primary); 
     color: var(--color-text-light);
+    width: 100%;
+    padding: 15px; /* Botón más grande */
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
-    margin-top: 15px;
-    transition: background-color 0.2s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin-top: 20px;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para efecto de levantamiento */
 }
 
 .btn-login:hover {
-    background-color: #4a3328; 
-}
-
-.btn-login:disabled {
-    background-color: var(--color-light-gray);
-    color: #666;
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
+    background-color: #3b2a1e; 
+    transform: translateY(-2px); /* Efecto de "levantamiento" */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .error-message {
-    color: var(--color-accent); 
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-    padding: 5px;
+    color: var(--color-danger); 
 }
 
 
 /* ====================================
-   PRODUCTOS: Grid y Plantilla (<template>)
-   ==================================== */
+    SECCIONES Y PRODUCTOS
+    ==================================== */
+
+.section-title {
+    color: var(--color-primary); 
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-accent); 
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -234,43 +272,55 @@ body {
     margin-top: 20px;
 }
 
-/* Estilos para la plantilla HTML */
+/* Estilos para Tarjeta (Web Component y Template) */
+.card, 
 .product-card-template {
+    display: flex;
+    flex-direction: column; 
+    height: 100%; 
+    
     border: 1px solid var(--color-light-gray);
     padding: 15px;
     border-radius: 8px;
-    background-color: var(--color-text-light); 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    background-color: var(--color-background-card); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
     text-align: center;
     transition: transform 0.2s;
 }
+
+.card:hover,
 .product-card-template:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15); 
 }
 
-.product-card-template img {
-    width: 100%;
-    max-height: 200px; 
-    object-fit: cover;
-    border-radius: 4px;
+.card h3,
+.product-card-template h3 {
+    color: var(--color-primary);
+    margin: 5px 0 0;
+    font-size: 1.2em;
 }
 
+.card .autor,
 .product-card-template .autor {
     font-style: italic;
     color: #6d6d6d;
     margin: 5px 0 10px;
 }
 
+.card .price,
 .product-card-template .price {
     color: var(--color-accent); 
     font-weight: bold;
     font-size: 1.1em;
     display: block;
-    margin-top: 10px;
+    margin-top: auto; 
+    padding-top: 10px;
 }
 
-.add-to-cart-btn {
+/* Botones de carrito en las tarjetas */
+.add-to-cart-btn,
+.card button {
     background-color: var(--color-accent); 
     color: var(--color-primary);
     border: none;
@@ -279,78 +329,36 @@ body {
     cursor: pointer;
     margin-top: 10px;
     font-weight: bold;
+    transition: background-color 0.2s;
 }
 
-.add-to-cart-btn:hover {
-    background-color: #af8751;
-}
-
-/* ====================================
-   ESTILOS DEL WEB COMPONENT (<product-card>)
-   (Utilizados dentro del Shadow DOM)
-   ==================================== */
-.card {
-    border: 1px solid var(--color-light-gray);
-    background-color: var(--color-text-light);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.card img {
-    width: 100%;
-    max-height: 200px; 
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    color: var(--color-primary);
-    margin: 5px 0 0;
-    font-size: 1.2em;
-}
-
-.card .autor {
-    font-size: 0.9em;
-    color: #6d6d6d;
-    margin-bottom: 10px;
-}
-
-.card .price {
-    font-weight: bold;
-    color: var(--color-accent);
-    font-size: 1.1em;
-    display: block;
-    margin-top: 10px;
-}
-
-.card button {
-    background-color: var(--color-accent);
-    color: var(--color-primary);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
+.add-to-cart-btn:hover,
 .card button:hover {
-    background-color: #af8751;
+    background-color: #a77c47; 
 }
 
 
-/* ====================================
-   ANIMACIÓN CREATIVA PARA LOGIN
-   ==================================== */
+/* Imágenes */
+.card img,
+.product-card-template img,
+product-card img {
+    max-width: 100%; 
+    width: auto;
+    height: 180px; 
+    object-fit: contain; 
+    display: block;
+    margin: 0 auto 10px auto; 
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
+}
 
+
+/* ===========================================
+   ANIMACIÓN Y RESPONSIVE DESIGN
+   =========================================== */
+
+/* Animación de error en Login */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-10px); }
@@ -363,11 +371,7 @@ body {
                 0 0 0 3px var(--color-accent);
 }
 
-
-/* 
-   RESPONSIVE DESIGN (Media Queries)
-   */
-
+/* Media Queries (Móviles) */
 @media (max-width: 768px) {
     
     .main-container {
@@ -377,13 +381,19 @@ body {
     .header-content {
         justify-content: flex-start;
     }
+    
     .search-bar {
         display: none;
     }
     .menu-toggle {
         display: block;
     }
+    
+    .site-title-display {
+        font-size: 1.5em; /* Reducir el título en móvil */
+    }
 
+    /* Sidebar se convierte en menú deslizable */
     .main-sidebar {
         width: 250px;
         height: 100%;
