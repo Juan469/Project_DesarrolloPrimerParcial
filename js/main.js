@@ -1,6 +1,36 @@
-// ===========================================
-// 1. DEFINICIÓN DEL WEB COMPONENT <product-card>
-// ===========================================
+
+let cart = []; 
+
+
+function updateCartCount() {
+    const count = cart.length;
+    const newText = `🛒 Carrito (${count})`;
+    
+    const cartLinkSidebar = document.getElementById('cart-count'); 
+    if (cartLinkSidebar) {
+        cartLinkSidebar.textContent = newText;
+    }
+    
+    const cartLinkHeader = document.getElementById('cart-count-header'); 
+    if (cartLinkHeader) {
+        cartLinkHeader.textContent = newText;
+    }
+}
+
+
+function addToCart(productId) {
+    const id = parseInt(productId); 
+    if (isNaN(id)) return;
+    
+    cart.push(id);
+    updateCartCount();
+    
+    console.log(`Producto ID ${id} agregado. Total: ${cart.length}`);
+}
+window.addToCart = addToCart; 
+
+
+
 class ProductCard extends HTMLElement {
     constructor() {
         super();
@@ -8,78 +38,67 @@ class ProductCard extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['nombre', 'autor', 'precio', 'descripcion', 'imagen'];
+        return ['nombre', 'autor', 'precio', 'descripcion', 'imagen', 'data-product-id'];
     }
 
     attributeChangedCallback() {
+        this.render();
+    }
+    
+    connectedCallback() {
         this.render();
     }
 
     render() {
         const nombre = this.getAttribute('nombre') || 'Libro Desconocido';
         const autor = this.getAttribute('autor') || 'Autor Anónimo';
-        const precio = this.getAttribute('precio') || '0.00';
+        const precio = parseFloat(this.getAttribute('precio')) || 0;
+        const precioDisplay = precio.toLocaleString('es-CO'); 
         const descripcion = this.getAttribute('descripcion') || 'Sin descripción.';
         const imagen = this.getAttribute('imagen') || 'placeholder.jpg';
-        
+        const id = this.getAttribute('data-product-id'); 
+
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="./css/styles.css"> 
+            <style>@import url("./css/styles.css");</style> 
             
             <article class="card">
-                <img src="./img/${imagen}" alt="Portada de ${nombre}">
+                <img src="./img/${imagen}" alt="Portada de ${nombre}"> 
                 <h3>${nombre}</h3>
                 <p class="autor">Por: ${autor}</p>
                 <p>${descripcion.substring(0, 70)}...</p>
-                <span class="price">$${parseFloat(precio).toFixed(2)}</span>
-                <button>Añadir al Carrito</button>
+                <span class="price">$${precioDisplay}</span>
+                <button class="add-to-cart-btn">Añadir al Carrito</button>
             </article>
         `;
+
+        const button = this.shadowRoot.querySelector('.add-to-cart-btn');
+        if (button) {
+             button.addEventListener('click', () => {
+                if (window.addToCart && id) { 
+                    window.addToCart(id);
+                }
+            });
+        }
     }
 }
+if (!customElements.get('product-card')) {
+    customElements.define('product-card', ProductCard);
+}
 
-customElements.define('product-card', ProductCard);
 
-
-// ===========================================
-// 2. LÓGICA DE LA APLICACIÓN PRINCIPAL
-// ===========================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    const fragmentos = [
-        { id: 'header-placeholder', path: './components/header.html' },
-        { id: 'footer-placeholder', path: './components/footer.html' },
-        { id: 'sidebar-placeholder', path: './components/sidebar.html' }
-    ];
-
-    let fragmentsLoaded = 0;
-    const totalFragments = fragmentos.length;
-
-    fragmentos.forEach(frag => {
-        cargarFragmento(frag.id, frag.path, () => {
-            fragmentsLoaded++;
-            if (fragmentsLoaded === totalFragments) {
-                setupSidebarToggle();
-            }
-        });
-    });
-
-    cargarProductos();
-});
-
-// Función para cargar un fragmento HTML
-async function cargarFragmento(elementId, path, callback) {
+async function cargarFragmento(elementId, path) {
     try {
         const response = await fetch(path);
         const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
-        if (callback) callback();
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerHTML = html;
+        }
     } catch (error) {
         console.error(`Error al cargar el fragmento ${path}:`, error);
-        if (callback) callback();
     }
 }
 
-// Toggle del sidebar en móvil
 function setupSidebarToggle() {
     const menuButton = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.main-sidebar');
@@ -89,8 +108,8 @@ function setupSidebarToggle() {
             sidebar.classList.toggle('is-open');
         });
 
-        const sidebarLinks = sidebar.querySelectorAll('a');
-        sidebarLinks.forEach(link => {
+        
+        sidebar.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) { 
                     sidebar.classList.remove('is-open');
@@ -100,11 +119,8 @@ function setupSidebarToggle() {
     }
 }
 
-// ===========================================
-// 3. FUNCIÓN PARA CARGAR PRODUCTOS
-// ===========================================
+
 async function cargarProductos() {
-    // Mapear contenedores por género
     const contenedores = {
         "ciencia-ficcion": document.getElementById("product-list-ciencia"),
         "historia": document.getElementById("product-list-historia")
@@ -114,39 +130,52 @@ async function cargarProductos() {
         const response = await fetch('./data/productos.json');
         const productos = await response.json();
 
-        // Limpiar contenedores
-        Object.values(contenedores).forEach(c => c.innerHTML = '');
+        Object.values(contenedores).forEach(c => {
+            if (c) c.innerHTML = '';
+        });
 
         productos.forEach((producto, index) => {
             let card;
-
+            const formattedPrice = producto.precio ? producto.precio.toLocaleString('es-CO') : 'N/A';
+            
             if (index < 3) {
-                // Los 3 primeros con template
+                
                 const template = document.getElementById('product-template');
-                const clone = template.content.cloneNode(true);
+                if (!template) return;
+                
+                const clone = document.importNode(template.content, true);
+                
                 clone.querySelector('[data-target="nombre"]').textContent = producto.nombre;
                 clone.querySelector('[data-target="autor"]').textContent = `Autor: ${producto.autor}`;
                 clone.querySelector('[data-target="descripcion"]').textContent = producto.descripcion;
-                clone.querySelector('[data-target="precio"]').textContent = `$${producto.precio.toFixed(2)}`;
-                clone.querySelector('[data-target="imagen-url"]').src = `./img/${producto.imagen}`;
+                clone.querySelector('[data-target="precio"]').textContent = `$${formattedPrice}`;
+                
+                
+                clone.querySelector('[data-target="imagen-url"]').src = `./img/${producto.imagen}`; 
                 clone.querySelector('[data-target="imagen-url"]').alt = producto.nombre;
+                
+                
+                const addButton = clone.querySelector('.add-to-cart-btn'); 
+                if (addButton) {
+                    addButton.addEventListener('click', () => addToCart(producto.id));
+                }
+                
                 card = clone;
             } else {
                 // Resto con Web Component
                 const comp = document.createElement('product-card');
                 comp.setAttribute('nombre', producto.nombre);
                 comp.setAttribute('autor', producto.autor); 
-                comp.setAttribute('precio', producto.precio);
+                comp.setAttribute('precio', producto.precio); 
                 comp.setAttribute('descripcion', producto.descripcion);
                 comp.setAttribute('imagen', producto.imagen);
+                comp.setAttribute('data-product-id', producto.id);
+                
                 card = comp;
             }
 
-            // Insertar en el contenedor correcto según el género
-            if (contenedores[producto.genero]) {
+            if (contenedores[producto.genero] && card) {
                 contenedores[producto.genero].appendChild(card);
-            } else {
-                console.warn(`⚠️ Género no reconocido: ${producto.genero}`);
             }
         });
 
@@ -154,3 +183,19 @@ async function cargarProductos() {
         console.error('Error al cargar los productos:', error);
     }
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Carga de fragmentos de estructura (se usa await para forzar el orden y estabilidad)
+    await cargarFragmento('header-placeholder', './components/header.html');
+    await cargarFragmento('footer-placeholder', './components/footer.html');
+    
+    // 2. Carga del Sidebar 
+    await cargarFragmento('sidebar-placeholder', './components/sidebar.html');
+    setupSidebarToggle();
+    updateCartCount(); 
+
+    cargarProductos();
+});
