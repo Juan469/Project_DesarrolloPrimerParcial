@@ -61,3 +61,5 @@ Esto se evidencia en:
 2.  **Manejo de Ramas (Branches):** Se utilizaron ramas dedicadas para el desarrollo de nuevas funcionalidades y corrección de errores, asegurando que el código fuera estable antes de su integración.
 3.  **Código Revisado:** Las contribuciones fueron integradas a través de *Pull Requests* (PR), lo que implicó una revisión del código para asegurar su calidad y funcionalidad antes de ser fusionado a la rama principal del proyecto.
 
+Proyecto con solo fines educativos-Universidad
+
